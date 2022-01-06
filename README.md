@@ -101,7 +101,7 @@ Start-activeDataprocessor:
 List<String> processorList = {nameProcessor1,nameProcessor2,...};
 pluginManager.getInstance().startDataProcessors(listProcessors);
 ```
-Stop-sensor:
+Stop-DisableDataprocessor:
 ```sh
 List<String> processorList = {nameProcessor1,nameProcessor2,...};
 pluginManager.getInstance().stopDataProcessors(listProcessors);
