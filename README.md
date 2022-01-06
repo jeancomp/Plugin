@@ -1,4 +1,4 @@
-# Plugin OpenDPMH - Framework to Facilitate the Development of Digital Phenotyping Applications
+# Plugin (OpenDPMH) - Framework to Facilitate the Development of Digital Phenotyping Applications
 > Plugin is an application that makes up the OpenDPMH framework, contains other data processing modules.
 
 
@@ -13,12 +13,10 @@ Sumário
 <!--ts-->
    * [Goals](#Goals)
    * [Project status](#Project-status)
-   * [Release history](#Release-history)
    * [How to use](#How-to-use)
       * [Prerequisites](#Prerequisites)
       * [Installation](#Installation)
       * [Example of use](#Example-of-use)
-   * [Plugin](#Plugin)
    * [License](#License)
    * [Contribution](#Contribution)
    * [Author](#Author)
@@ -52,14 +50,6 @@ Project-status
 
 - [x] PluginManager
 - [x] DataProcessor
-
-
-Release-history
-=================
-
-* 0.0.1
-    * Security adaptation (digital certificates) in progress.
-    * Adaptation of virtual sensors to the M-HUB.
 
 How-to-use
 ==================
@@ -116,12 +106,6 @@ Stop-sensor:
 List<String> processorList = {nameProcessor1,nameProcessor2,...};
 pluginManager.getInstance().stopDataProcessors(listProcessors);
 ```
-
-Plugin
-=================
-Instructions for use.
------
-[https://github.com/jeancomp/Plugin](https://github.com/jeancomp/Plugin)
 
 License
 =================
