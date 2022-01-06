@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private PluginManager pluginManager;
     private DPManagerService myService;
     private List<String> processorList = new ArrayList();
-    private SaveActivity saveActivity;;
+    private SaveActivity saveActivity;
     private Activity activity;
 
     @Override
