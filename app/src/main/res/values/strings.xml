@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Plugin</string>
+    <string name="action_close">Close</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="plugin">Start Plugin</string>
+    <string name="previous">Previous</string>
+
+    <string name="text2">App envia mensagem para Borker.</string>
+</resources>

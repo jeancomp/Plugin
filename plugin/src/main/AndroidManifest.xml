@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="br.ufma.lsdi.plugin">
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Plugin">
+        <service android:name=".pluginmanager.DPManagerService" />
+        <service android:name=".dataprocessor.processors.PhysicalActivity" />
+        <service android:name=".dataprocessor.processors.DetectedActivityIntentService"
+            tools:ignore="Instantiatable" />
+        <service android:name=".dataprocessor.processors.ActivityDetectionService" />
+    </application>
+
+</manifest>
