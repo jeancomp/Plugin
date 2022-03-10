@@ -24,6 +24,7 @@ public class DetectedActivityIntentService extends IntentService {
     private PhysicalActivity physicalActivity;
     private Context context;
     private Send send;
+    private TriggerAlarm1 triggerAlarm1 = TriggerAlarm1.getInstance();
 
     public DetectedActivityIntentService(){
         super("DetectedActivityIntentService");
@@ -161,6 +162,8 @@ public class DetectedActivityIntentService extends IntentService {
             //mTextARLabel.setText(label);
             //mTextConfidence.setText(confidence+"");
         }
+        triggerAlarm1.getInstance().set(true);
+
         //Log.i(TAG, "#### Broadcast:onReceive(): Activity is " + label + " and confidence level is: " + confidence);
         long timestamp = System.currentTimeMillis();
         Object[] valor = {label, confidence, timestamp};

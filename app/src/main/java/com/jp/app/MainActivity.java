@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
     private void initPermissions() {
         // Checa as permissões
         int PERMISSION_ALL = 1;
-        String[] PERMISSIONS = {Manifest.permission.FOREGROUND_SERVICE, android.Manifest.permission.ACTIVITY_RECOGNITION};
+        String[] PERMISSIONS = {Manifest.permission.FOREGROUND_SERVICE, android.Manifest.permission.ACTIVITY_RECOGNITION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
 
             if (!hasPermissions(activity, PERMISSIONS)) {
                 ActivityCompat.requestPermissions(activity, PERMISSIONS, PERMISSION_ALL);

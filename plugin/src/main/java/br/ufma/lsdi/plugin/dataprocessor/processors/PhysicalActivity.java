@@ -1,23 +1,14 @@
 package br.ufma.lsdi.plugin.dataprocessor.processors;
 
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Binder;
-import android.os.Build;
 import android.os.IBinder;
+import android.os.SystemClock;
 import android.util.Log;
-
-import com.google.android.gms.location.ActivityRecognitionClient;
-
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import br.ufma.lsdi.cddl.CDDL;
 import br.ufma.lsdi.cddl.message.Message;
+import br.ufma.lsdi.plugin.Topics;
 import br.ufma.lsdi.plugin.dataprocessor.base.DataProcessor;
 import br.ufma.lsdi.plugin.dataprocessor.digitalphenotypeevent.DigitalPhenotypeEvent;
 import br.ufma.lsdi.plugin.dataprocessor.digitalphenotypeevent.Situation;
@@ -29,17 +20,25 @@ import br.ufma.lsdi.plugin.pluginmanager.handlingexceptions.InvalidDataProcessor
  */
 public class PhysicalActivity extends DataProcessor {
     private static final String TAG = PhysicalActivity.class.getName();
-    List<String> sensorList = new ArrayList();
+    /*List<String> sensorList = new ArrayList();
     List<Integer> samplingRateList = new ArrayList();
-    ActivityRecognitionClient mActivityRecognitionClient;
+    ActivityRecognitionClient mActivityRecognitionClient;*/
+    private TriggerAlarm1 triggerAlarm1;
+    private Thread thread;
+    private Intent i;
 
     @Override
     public void init(){
         try {
             setDataProcessorName("PhysicalActivity");
 
-            Intent i = new Intent(this, ActivityDetectionService.class);
+            i = new Intent(this, ActivityDetectionService.class);
             startService(i);
+
+            triggerAlarm1 = new TriggerAlarm1();
+            triggerAlarm1.getInstance().set(false);
+            thread = new Thread(new ProcessTrigger());
+            thread.start();
         } catch (InvalidDataProcessorNameException e) {
             e.printStackTrace();
         }
@@ -48,6 +47,36 @@ public class PhysicalActivity extends DataProcessor {
         /*sensorList.add("MC34XX ACCELEROMETER");
         samplingRateList.add(8000);
         startSensor(sensorList,samplingRateList);*/
+    }
+
+
+    private class ProcessTrigger implements Runnable {
+        final int tempoDeEspera = 60000;
+
+        @Override
+        public void run() {
+            while(!Thread.interrupted()) {
+                SystemClock.sleep(tempoDeEspera);
+                if (!triggerAlarm1.getInstance().get()) {
+                    //cria uma mensagem nula: nenhum dado de sensor foi gerado no intervalo de 1 min
+                    long timestamp = System.currentTimeMillis();
+                    String label = "Nenhum_dado";
+                    int confidence = 0;
+
+                    Object[] valor = {label, confidence, timestamp};
+                    String[] str = {"Type of activity", "Confidence", "timestamp"};
+                    Message message = new Message();
+                    message.setServiceValue(valor);
+                    message.setAvailableAttributesList(str);
+                    message.setAvailableAttributes(3);
+                    message.setServiceName(Topics.INFERENCE_TOPIC.toString());
+                    message.setTopic(Topics.INFERENCE_TOPIC.toString());
+
+                    onSensorDataArrived(message);
+                }
+                triggerAlarm1.getInstance().set(false);
+            }
+        }
     }
 
 
@@ -94,7 +123,13 @@ public class PhysicalActivity extends DataProcessor {
     }
 
 
-    public void end(){ }
+    public void end(){
+        if (thread != null) {
+            thread.interrupt();
+            thread = null;
+        }
+        stopService(i);
+    }
 
 
     public final IBinder mBinder = new PhysicalActivity.LocalBinder();
