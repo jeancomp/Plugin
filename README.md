@@ -1,4 +1,4 @@
-# Plugin (OpenDPMH) - Framework to Facilitate the Development of Digital Phenotyping Applications
+# Plugin (OpenDP) - Framework to Facilitate the Development of Digital Phenotyping Applications
 > Plugin is an application that makes up the OpenDPMH framework, contains other data processing modules.
 
 
