@@ -1,5 +1,5 @@
 # Plugin (OpenDP) - Framework to Facilitate the Development of Digital Phenotyping Applications
-> Plugin is an application that makes up the OpenDPMH framework, contains other data processing modules.
+> Plugin is an application that makes up the OpenDP framework, contains other data processing modules.
 
 
 [![GitHub issues](https://img.shields.io/github/issues/jeancomp/fenotipagem_digital_saude_vs_0_1)](https://github.com/jeancomp/fenotipagem_digital_saude_vs_0_1/issues)
@@ -25,7 +25,7 @@ Summary
 
 Goals
 =================
-The Plugin aims to facilitate the development of new data processing modules, without the need to recompile the original project that is running the OpenDPMH Framework, nor to interrupt the user's raw data collection.
+The Plugin aims to facilitate the development of new data processing modules, without the need to recompile the original project that is running the OpenDP Framework, nor to interrupt the user's raw data collection.
 
 <h1 align="center">
   <img alt="Arquitetura-framework" title="#Arquitetura" src="/framework.png" />
