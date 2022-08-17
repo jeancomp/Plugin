@@ -1,6 +1,6 @@
-# Plugin (OpenDPMH) - Framework to Facilitate the Development of Digital Phenotyping Applications
+# Plugin to OpenDPMH: An Extensible Framework for Developing Mobile Sensing Applications of Digital Phenotyping
 <p align="center">
-Plugin is an application that makes up the OpenDPMH framework, contains other data processing modules.
+The OpenDPMH architecture is enabled to add plugins, which extend the framework's capabilities by allowing the addition of new data processing modules.
 </p>
 
 ## 📋 Requirements
@@ -14,10 +14,9 @@ The Plugin aims to facilitate the development of new data processing modules, wi
 
 ## 👏 Contributing
  
-The Plugin is a feature from OpenDPMH and both are open-source projects. If there's a a bug, or other improvement you'd like, we encourage you to contribute!
+The Plugin is a feature from OpenDPMH and both are open-source projects. If there is a bug, or other improvement you would like to report or request, we encourage you to contribute.
 
-If you want to contact directly us, feel free by email: [![Gmail Badge](https://img.shields.io/badge/-ariel@lsdi.ufma.br-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:ariel@lsdi.ufma.br)](mailto:ariel@lsdi.ufma.br)
-
+Please, feel free to contact us for any questions: [![Gmail Badge](https://img.shields.io/badge/-ariel@lsdi.ufma.br-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:ariel@lsdi.ufma.br)](mailto:ariel@lsdi.ufma.br)
 
 ## 📄 License
 
